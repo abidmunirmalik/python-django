@@ -1,0 +1,12 @@
+$ cd development
+$ virtualenv -p python3 .
+$ source bin/activate
+$ python -V
+Python 3.7.4
+$ pip install django
+$ python -m django-admin --version
+2.2.4
+$ django-admin startproject coffeehouse
+$ ls -ltr coffeehouse/
+-rwxr-xr-x manage.py
+drwxr-xr-x coffeehouse
