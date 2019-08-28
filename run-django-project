@@ -39,8 +39,10 @@ DATABASES = {
 
 - The Django DATABASES variable defines key-value pairs
 - Each key represents a database reference name and the value is a Python dictionary with the database connection parameters
-- The default reference name is used to indicate that any database related operation declared in a Django project be executed against this connection
-- This means that unless otherwise specified, all database CRUD operations are done against the database defined with the default key
+- The default reference name is used to indicate that any database related operation declared in a 
+Django project be executed against this connection
+- This means that unless otherwise specified, all database CRUD operations are 
+done against the database defined with the default key
 - The database connection parameters for the default database in this case are the keys ENGINE and NAME
 - which represent a database engine (i.e. brand) and the name of the database instance, respectively
 - The most important parameter of a Django database connection is the ENGINE value
@@ -56,3 +58,41 @@ DATABASES = {
 Note: These are included in django installation so no extra package is required
 
 # build Django base tables
+- the most common and first task to do is  migrate the project's data structures to the database
+- The Django database migration process ensures all Django project logic associated with a database
+- To run a migration on a Django project against a database use python manage.py migrate from BASE_DIR
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ pwd
+/Users/abmalik/student/lab/development/COFFEEHOUSE
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ ls
+coffeehouse	db.sqlite3	manage.py
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ python manage.py makemigrations
+No changes detected
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying sessions.0001_initial... OK
+
+
+
+
