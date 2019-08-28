@@ -37,4 +37,22 @@ DATABASES = {
     }
 }
 
+- The Django DATABASES variable defines key-value pairs
+- Each key represents a database reference name and the value is a Python dictionary with the database connection parameters
+- The default reference name is used to indicate that any database related operation declared in a Django project be executed against this connection
+- This means that unless otherwise specified, all database CRUD operations are done against the database defined with the default key
+- The database connection parameters for the default database in this case are the keys ENGINE and NAME
+- which represent a database engine (i.e. brand) and the name of the database instance, respectively
+- The most important parameter of a Django database connection is the ENGINE value
+- The Django database connection parameter NAME is used to identify a database instance
+- and its value convention can vary depending on the database brand
+- for SQLite NAME indicates the location of a flat file
+- for MySQL it indicates the logical name of an instance
+- USER & PASSWORD are not required when connecting to SQLite
 
+# Django ENGINE value for different databases
+- MySQL  django.db.backends.mysql
+- SQLITE django.db.backends.sqlite3
+Note: These are included in django installation so no extra package is required
+
+# build Django base tables
