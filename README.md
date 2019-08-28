@@ -1,2 +1,3 @@
 # python-django
-Python Web Framework
+Python Web Framework for building Web Applications
+
