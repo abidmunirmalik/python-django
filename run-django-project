@@ -1,12 +1,40 @@
+# CREATE ENVIRONMENT
 $ cd development
 $ virtualenv -p python3 .
 $ source bin/activate
 $ python -V
 Python 3.7.4
+
+# INSTALL DJANGO
 $ pip install django
 $ python -m django-admin --version
 2.2.4
+
+#START DJANGO PROJECT
 $ django-admin startproject coffeehouse
 $ ls -ltr coffeehouse/
 -rwxr-xr-x manage.py
 drwxr-xr-x coffeehouse
+
+TIP: There are two folders of same name 'coffeehouse' as BASE_DIR and then 'coffeehouse' PROJECT_DIR, it is best practise to rename 
+BASE_DIR like UPPERCASE letter so $mv coffeehouse COFFEEHOUSE
+
+CAUTION: DO NOT RENAME PROJECT_DIR
+
+# RUN THE SERVER
+$ python manage.py runserver 0.0.0.0:8000
+
+#DATABASE FOR DJANGO
+- Django in its 'out-of-the-box' state is set up to communicate with SQLite
+- SQLite is a lightweight relational database included with the Python distribution
+- Django automatically creates a SQLite database for your project
+- The Django config to connect to a database is done inside the settting.py file of a Django project in the DATABASES variable
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+
