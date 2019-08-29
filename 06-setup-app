@@ -1,0 +1,60 @@
+# START NEW APP
+- from the command-line at ROOT (BASE_DIR) 'python manage.py startapp passports'
+(development) abidmac:DOCBOX student$ python manage.py startapp passports
+(development) abidmac:DOCBOX student$ python manage.py startapp cards
+
+- notice the app folder is at the PROJECT level
+(development) abidmac:DOCBOX student$ ls
+db.sqlite3	docbox		manage.py	passports cards
+
+# STRUCTURE OF DJANGO APP
+(development) abidmac:DOCBOX student$ cd passports
+(development) abidmac:passports student$ ls -ltr
+total 40
+-rw-r--r--  1 student  staff   0 Aug 29 15:48 __init__.py
+-rw-r--r--  1 student  staff  63 Aug 29 15:48 views.py
+-rw-r--r--  1 student  staff  63 Aug 29 15:48 admin.py
+-rw-r--r--  1 student  staff  93 Aug 29 15:48 apps.py
+-rw-r--r--  1 student  staff  57 Aug 29 15:48 models.py
+-rw-r--r--  1 student  staff  60 Aug 29 15:48 tests.py
+drwxr-xr-x  3 student  staff  96 Aug 29 15:48 migrations
+
+# CREATE DATABASE STRUCTURE FOR APP - CREATE MODEL FOR BACKEND
+- start with models.py 
+from django.db import models
+
+# CREATE MODEL i.e app/models.py
+class Passports(models.Model):
+    surname     = models.CharField(max_length=10, default='MALIK', null=False)
+    firstName   = models.CharField(max_length=25, null=False)
+    dob         = models.DateField(null=False)
+    dataOfIssue = models.DateField(null=False)
+    dateOfExpiry= models.DateField(null=False)
+    country     = models.CharField(max_length=15, default='United States', null=False)
+    pNumber     = models.CharField(max_length=20, null=False)
+    pType       = models.CharField(max_length=5)
+    
+    
+# INSTALL APP 
+- Make entry in the 'settings.py' of PROJECT_FOLDER project_dir/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'passports',
+]
+
+# SYNC WITH DATABASE BY CREATING MIGRATIONS & RUN MIGRATE - FROM ROOT DIR (BASE_DIR)
+(development) abidmac:DOCBOX student$ python manage.py makemigrations
+Migrations for 'passports':
+  passports/migrations/0001_initial.py
+    - Create model Passports
+(development) abidmac:DOCBOX student$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, passports, sessions
+Running migrations:
+  Applying passports.0001_initial... OK
+    
