@@ -94,5 +94,6 @@ Running migrations:
   Applying sessions.0001_initial... OK
 
 
-
+NOTE: if the connection to the database is successful, Django applies a series of migrations that create database tables 
+to manage users, groups, permissions and sessions for a project
 
