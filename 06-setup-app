@@ -57,4 +57,11 @@ Operations to perform:
   Apply all migrations: admin, auth, contenttypes, passports, sessions
 Running migrations:
   Applying passports.0001_initial... OK
-    
+  
+# REGISTER MODEL in app/admin.py
+from django.contrib import admin
+from .models import Passports
+admin.site.register(Passports)
+
+# ACCESS YOUR APP FROM admin
+http://localhost:8000/admin/passports
