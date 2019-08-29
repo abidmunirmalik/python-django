@@ -1,0 +1,97 @@
+# UNDERSTAND URLS, TEMPLATE, APPS
+- Content in Django projects works with three major building blocks: urls, templates and apps
+- You create and configure Django urls, templates and apps separately
+- Urls define the entry points or where to access content
+- Templates define the end points that give form to the final content
+- apps serve as the middleware between urls and templates, altering or adding content from a database or user interactions
+
+# RUN JUST STATIC CONTENT
+- For static contnet, we only need create and configure urls & templates - App is not required
+- To work with dynamic data either from database or user, we need to create and configure Apps on top of url & template
+
+# HOW CONTENT IS DELIVER TO END-USER
+- configure urls.py to route the end-user requests
+- if the content is STATIC, setup TEMPLATE directory in settings.py
+- if the content is DYNAMIC, 'python manage.py startapp' and app folder contains modles.py and views.py
+
+Step 1. Add entry to urls.py - Note the 3rd line
+
+from django.contrib import admin
+from django.urls import path
+from django.views.generic import TemplateView
+
+Step 2. Add entry to pathurl to urls.py - Note the 3rd & 4th lines 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',TemplateView.as_view(template_name='index.html')),
+    path('home/',TemplateView.as_view(template_name='index.html')),
+    
+]
+
+Step 3. Configure Template directory
+- create sub-directory called 'templates' in your Django project's PROJECT_DIR
+- create 'index.html' and put that file into 'template' sub-folder
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ pwd
+/Users/abmalik/student/lab/development/COFFEEHOUSE
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ ls
+coffeehouse	db.sqlite3	manage.py
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ cd coffeehouse/
+(development) ncralamalik-m2:coffeehouse abmalik$ ls
+__init__.py	__pycache__	settings.py	urls.py		wsgi.py
+
+(development) ncralamalik-m2:coffeehouse abmalik$ mkdir templates
+
+(development) ncralamalik-m2:coffeehouse abmalik$ pwd
+/Users/abmalik/student/lab/development/COFFEEHOUSE/coffeehouse
+
+(development) ncralamalik-m2:coffeehouse abmalik$ cd templates/
+(development) ncralamalik-m2:templates abmalik$ ls -ltr
+total 8
+-rw-r--r--  1 abmalik  staff  63 Aug 29 09:47 index.html
+
+Step 4 - Configure settings.py 
+- you need to define the template directory in the DIRS property of the TEMPLATES variable
+
+BEFORE
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+AFTER
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['%s/templates/' % (PROJECT_DIR),],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
