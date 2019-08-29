@@ -1,0 +1,21 @@
+# DJANGO USER SYSTEM
+- django user system is based on django.contrib.auth package that is built-in django framework
+
+# TYPES OF DJANGO USERS
+- User : If a user authenticates himself Django recognizes him as a User
+- AnonymousUser: if a user just surfs an application without any authentication, Django recognizes him as an AnonymousUser
+
+# USER SUB-TYPES
+- superuser: The most powerful user with permissions to create, read, update and delete data in the Django admin
+             which includes model records and other users
+- staff:     A user marked as staff can access the Django admin But permissions to create, read, update and delete 
+             data in the Django admin must be given explicitly to a user 
+             By default, a superuser is marked as staff.
+- active:    All users are marked as active if they're in good standing 
+             Users marked as inactive aren't able to authenticate themselves 
+             
+# DJANGO USER SYSTEM
+- The first user you'll want to create is a superuser
+             
+             
+             
