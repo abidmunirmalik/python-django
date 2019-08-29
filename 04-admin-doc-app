@@ -1,0 +1,34 @@
+# INSTALL DJANGO ADMIN SITE DOCUMENTATION APP
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ pip install docutils
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ pip freeze
+Django==2.2.4
+docutils==0.15.2
+pytz==2019.2
+sqlparse==0.3.0
+
+Note the 2nd line from settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+
+Note the 2nd import of include and 2nd line in urlpatterns section of urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
+]
+
+# ACCESS DOCUMENTATION APP
+http://127.0.0.1/admin/doc
