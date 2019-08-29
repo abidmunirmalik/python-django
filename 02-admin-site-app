@@ -1,0 +1,27 @@
+# CONFIGURE AND INSTALL THE DJANGO ADMIN SITE APP
+- The Django admin site is built as a Django app
+- this means the only thing you need to do to set up the Django admin site is configure/install the app as any other Django app
+- The Django admin site requires that you previously configure a database and also install the Django base tables
+- By default, the Django admin is enabled on all Django projects
+- If you open a Django project's urls.py file, in the urlpatterns variable you'll see the line path('admin/', admin.site.urls)
+- This last path definition tells Django to enable the admin site app on the /admin/ url directory
+- e.g. http://127.0.0.1:8000/admin/
+- Next, if you open the project's settings.py file and go to the INSTALLED_APPS variable
+-  Near the top of this variable you'll also see the line django.contrib.admin
+   which indicates the Django admin site app is enabled.
+   
+# ACCESSING ADMIN SITE
+- Start the development web server by executing 'python manage.py runserver' on Django's BASE_DIR
+- Open a browser on the Django admin site http://127.0.0.1:8000/admin/
+
+
+# CREATE ADMIN SITE LOGIN
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ ls
+coffeehouse	db.sqlite3	manage.py
+
+(development) ncralamalik-m2:COFFEEHOUSE abmalik$ python manage.py createsuperuser
+Username (leave blank to use 'abmalik'): admin
+Email address: admin@coffeehouse.com
+Password: 
+Password (again): 
+Superuser created successfully.
