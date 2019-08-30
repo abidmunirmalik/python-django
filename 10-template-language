@@ -1,0 +1,60 @@
+# HOW TO USE BASE.HTML IN TEMPLATING
+(development) abidmac:DOCBOX student$ cd templates/
+(development) abidmac:templates student$ ls
+base.html	blog.html	contact.html	index.html
+
+base.html
+<html>
+<body>
+ {% block content %}
+     replace me
+ {% endblock %}
+</body>
+
+
+INDEX.HTML
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>I am index.html</h1>
+
+{% endblock %}
+
+BLOG.HTML
+{% extends 'base.html' %}
+{% block content %}
+<h1>I am blog.html</h1>
+{% endblock %}
+
+
+CONTACT.HTML
+{% extends 'base.html' %}
+{% block content %}
+    {{ request.user }}
+    {{ request.method }}
+    {{ request.scheme }}
+    {{ request.body }}
+    {{ request.path }}
+    
+{% endblock %}
+
+
+APP/VIEWS.PY
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here i.e web pages
+def home_view(request):
+    #return render(request,template_name,context in form of dictionary {})
+    return render(request, "index.html")
+    
+
+
+def blog_view(request):
+    return render(request, "blog.html",{})
+
+# Contact view i.e webpage
+def contact_view(request):
+    return render(request, "contact.html",{})
+    
