@@ -1,0 +1,37 @@
+# SETTING UP BLOG PAGE APPLICATION AND ADD AS INSTAllED APP
+- goal is to see 'This is my blog page' when end user type 'http://localhost:8000/blog'
+
+- First step is always add the 'app' to PROJECT_DIR/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'passports',
+    'nicops',
+    'blog',
+]
+
+# CREATE VIEW OF YOUR PAGE views.py
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def blog_view(request):
+    return HttpResponse("<center><h1>MY BLOG</h1></center>")
+    
+    
+# ADD URL ENTRY IN PROJECT_DIR/urls.py
+from django.contrib import admin
+from django.urls import path
+from blog.views import blog_view
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('blog/',blog_view, name='blog')
+]
+
+    
+    
+    
