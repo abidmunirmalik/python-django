@@ -1,0 +1,38 @@
+# REQUEST & RESPONSE OBJECTS
+- Django uses request and response objects to pass state through the system
+- When a page is requested, Django creates an HttpRequest object that contains metadata about the request
+- Then Django loads the appropriate view, passing the HttpRequest as the first argument to the view function
+- Each view is responsible for returning an HttpResponse object
+- HttpRequest & HttpResponse objects are defined in django.http module
+
+# HttpRequest OBJECT (Class) & ITS METHODS & ATTRIBUTES
+class HttpRequest()
+ATTRIBUTES
+- HttpRequest.scheme i.e http or https
+- HttpRequest.body i.e raw request in bytestring
+- HttpRequest.path i.e A string representing the full path to the requested page
+- HttpRequest.method i.e GET or POST 
+if request.method == 'GET':
+    do_something()
+elif request.method == 'POST':
+    do_something_else()
+- HttpRequest.GET i.e A dictionary-like object containing all given HTTP GET parameters
+- HttpRequest.headers i.e A dictionary containing all available HTTP headers
+- HttpRequest.user i.e logged in user
+
+# HttpRequest METHODS
+- HttpRequest.get_host()
+- HttpRequest.get_port()
+- HttpRequest.get_full_path_info()
+- HttpRequest.build_absolute_uri(location=None)
+- HttpRequest.is_secure()
+
+# HttpResponse OBJECT (Class) & ITS METHODS & ATTRIBUTES
+class HttpResponse
+from django.http import HttpResponse
+response = HttpResponse("Here's the text of the Web page.")
+response = HttpResponse()
+response.write("<p>Here's the text of the Web page.</p>")
+
+
+    
